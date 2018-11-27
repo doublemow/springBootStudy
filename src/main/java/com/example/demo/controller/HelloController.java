@@ -1,11 +1,11 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.User;
+import com.example.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Date;
 
 /**
  * @author chen qi
@@ -13,19 +13,18 @@ import java.util.Date;
 @RestController
 @Slf4j
 public class HelloController {
+
+    @Autowired
+    UserService userService;
+
     @RequestMapping(value = "/hello")
     public String hello() {
         return "hello,Spring Boot";
     }
 
-    @RequestMapping(value = "/getUser")
-    public User getUser(){
-        User u = new User();
-        u.setAge("18");
-        u.setName("dake");
-        u.setPwd("234");
-        u.setBirthDay(new Date());
-        u.setGrade("90");
+    @RequestMapping(value = "/getUserById")
+    public User getUserById(){
+        User u = userService.getById(1L);
         log.debug("------------------debug-----------------");
         log.info("-------------------info-------------------");
         log.error("==================error==================");
@@ -35,12 +34,5 @@ public class HelloController {
     public static void main(String[] args) {
 
         User u = new User();
-        u.setAge("18");
-        u.setName("dake");
-        u.setPwd("234");
-        u.setBirthDay(new Date());
-        u.setGrade("90");
-
-        System.out.println(u.getPwd());
     }
 }
