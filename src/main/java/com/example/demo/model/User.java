@@ -1,18 +1,14 @@
 package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 import java.util.Date;
 
 /**
  * @author a
  */
-@Setter
-@ToString
-@Getter
+@Data
 public class User {
     String name;
     String age;
