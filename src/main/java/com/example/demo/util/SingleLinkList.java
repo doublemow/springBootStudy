@@ -7,6 +7,8 @@ package com.example.demo.util;
 public class SingleLinkList {
 
     public Node head = null;
+    public int n = 0;
+    public static final int CACHE_CAPACITY = 20;
 
     public Node findByValue(int value){
         Node p = head;
@@ -188,6 +190,40 @@ public class SingleLinkList {
         }else {
             return false;
         }
+    }
+
+    /**
+     * LRU算法
+     */
+    public void addCache(int value){
+        if(head == null){
+            head = new Node(value,null);
+            ++n;
+            return;
+        }
+        if(head.data == value){
+            Node p = new Node(value,null);
+            p.next = head;
+            head = p;
+            ++n;
+            if(n > CACHE_CAPACITY){
+                //删除最后一个;
+            }
+            return;
+        }
+        Node p = head;
+        Node q = null;
+        while (p.next != null){
+            if(p.next.data == value){
+                q = p.next;
+                p.next = p.next.next;
+                q.next = head;
+                head = q;
+                return;
+            }
+            p = p.next;
+        }
+        //判断n大小,如果小于内存直接添加在头部，如果大于先删除末尾再添加
     }
 
     public static class Node{
