@@ -2,6 +2,7 @@ package com.example.demo.util;
 
 /**
  * 单链表
+ * 主要算法：判断是否是回文
  * @author chen qi
  */
 public class SingleLinkList {
@@ -245,27 +246,13 @@ public class SingleLinkList {
     }
 
     public static void main(String[] args) {
+        //判断是否是回文
         SingleLinkList link = new SingleLinkList();
-        System.out.println("hello");
-        //int data[] = {1};
-        //int data[] = {1,2};
-        //int data[] = {1,2,3,1};
-        //int data[] = {1,2,5};
-        //int data[] = {1,2,2,1};
-        // int data[] = {1,2,5,2,1};
         int data[] = {1,2,5,2,1};
-
         for(int i =0; i < data.length; i++){
             //link.insertToHead(data[i]);
             link.insertTail(data[i]);
         }
-        // link.printAll();
-        // Node p = link.inverseLinkList_head(link.head);
-        // while(p != null){
-        //     System.out.println("aa"+p.data);
-        //     p = p.next;
-        // }
-
         System.out.println("打印原始:");
         link.printAll();
         if (link.palindrome()){
@@ -273,6 +260,8 @@ public class SingleLinkList {
         }else{
             System.out.println("不是回文");
         }
+        //判断结束
+
     }
 
 }
