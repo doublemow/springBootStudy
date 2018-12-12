@@ -1,4 +1,4 @@
-package com.example.demo.util;
+package com.example.demo.algorithms;
 
 /**
  * 单链表
@@ -143,8 +143,8 @@ public class SingleLinkList {
             }
             System.out.println("中间节点"+p.data);
             System.out.println("开始执行奇数节点的回文判断");
-            Node leftLink = null;
-            Node rightLink = null;
+            Node leftLink;
+            Node rightLink;
             if(q.next == null){
                 //奇数
                  rightLink = p.next;
@@ -161,7 +161,7 @@ public class SingleLinkList {
     public Node inverseLinkList(Node p){
         Node pre = null;
         Node r = head;
-        Node next = null;
+        Node next;
 
         while (r != p){
             next = r.next;
@@ -248,9 +248,8 @@ public class SingleLinkList {
     public static void main(String[] args) {
         //判断是否是回文
         SingleLinkList link = new SingleLinkList();
-        int data[] = {1,2,5,2,1};
+        int[] data = {1,2,5,2,1};
         for(int i =0; i < data.length; i++){
-            //link.insertToHead(data[i]);
             link.insertTail(data[i]);
         }
         System.out.println("打印原始:");
