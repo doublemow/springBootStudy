@@ -21,7 +21,9 @@ public class CountExample2 {
 
     public static void main(String[] args) throws Exception{
         ExecutorService executorService = Executors.newCachedThreadPool();
+        //同时并发执行的线程数
         final Semaphore semaphore = new Semaphore(threadTotal);
+        //请求总数
         final CountDownLatch countDownLatch = new CountDownLatch(clientTotal);
         for(int i = 0; i < clientTotal; i++){
             executorService.execute(() -> {
