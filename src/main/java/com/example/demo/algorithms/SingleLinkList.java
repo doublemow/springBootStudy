@@ -130,6 +130,10 @@ public class SingleLinkList {
         System.out.println();
     }
 
+    /**
+     * 判断是否是回文字符
+     * @return
+     */
     public boolean palindrome(){
         if(head == null){
             return false;
@@ -158,6 +162,11 @@ public class SingleLinkList {
         }
     }
 
+    /**
+     * 翻转链表(从头到p的位置)
+     * @param p
+     * @return
+     */
     public Node inverseLinkList(Node p){
         Node pre = null;
         Node r = head;
@@ -174,6 +183,12 @@ public class SingleLinkList {
         return r;
     }
 
+    /**
+     * 判断两个链表中的值是否一致
+     * @param left
+     * @param right
+     * @return
+     */
     public boolean TFResult(Node left, Node right){
         Node l = left;
         Node r = right;
