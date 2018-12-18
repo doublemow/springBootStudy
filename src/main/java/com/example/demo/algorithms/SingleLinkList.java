@@ -247,7 +247,7 @@ public class SingleLinkList {
     }
 
     /**
-     * 环状检测
+     * 环状检测（快慢节点法）
      */
     private boolean checkCircle(){
         if(head == null){
@@ -268,6 +268,9 @@ public class SingleLinkList {
         return false;
     }
 
+    /**
+     * 环状检测（方法二）
+     */
     private boolean checkCircle1(){
         if(head == null){
             return false;
@@ -283,6 +286,38 @@ public class SingleLinkList {
         }
 
         return false;
+    }
+
+    /**
+     * 两个有序链表合并
+     * @param la
+     * @param lb
+     */
+    private Node mergeSortedLists(Node la, Node lb){
+        Node result = la.getData() <= lb.getData() ? la : lb;
+        Node next;
+        while (la != null && lb != null){
+            if (la.getData() <= lb.getData()){
+                if(la.next != null && la.next.getData() > lb.getData()){
+                    next = la.next;
+                    la.next = lb;
+                    la = next;
+                }else{
+                    la = la.next;
+                }
+            }else{
+                if(lb.next != null && lb.next.getData() > lb.getData()){
+                    next = lb.next;
+                    lb.next = lb;
+                    lb = next;
+                }else{
+                    lb = lb.next;
+                }
+            }
+        }
+        
+
+        return result;
     }
 
     /**
