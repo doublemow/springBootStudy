@@ -181,7 +181,7 @@ public class SingleLinkList {
                 rightLink = p.next;
                 leftLink = inverseLinkList(p);
             }
-            boolean result =  TFResult(rightLink,leftLink);
+            boolean result =  trueFalseResult(rightLink,leftLink);
             return result;
         }
     }
@@ -210,7 +210,7 @@ public class SingleLinkList {
     /**
      * 判断两个链表中的值是否一致
      */
-    private boolean TFResult(Node left, Node right){
+    private boolean trueFalseResult(Node left, Node right){
         Node l = left;
         Node r = right;
         System.out.println("left:" + l.data);
@@ -290,34 +290,78 @@ public class SingleLinkList {
 
     /**
      * 两个有序链表合并
-     * @param la
-     * @param lb
      */
     private Node mergeSortedLists(Node la, Node lb){
-        Node result = la.getData() <= lb.getData() ? la : lb;
-        Node next;
-        while (la != null && lb != null){
-            if (la.getData() <= lb.getData()){
-                if(la.next != null && la.next.getData() > lb.getData()){
-                    next = la.next;
-                    la.next = lb;
-                    la = next;
-                }else{
-                    la = la.next;
-                }
+        if(la == null){
+            return lb;
+        }
+        if(lb == null){
+            return la;
+        }
+        Node result;
+        Node p = la;
+        Node q = lb;
+        if(p.getData() <= q.getData()){
+            result = p;
+            p = p.next;
+        }else{
+            result = q;
+            q = q.next;
+        }
+        Node head = result;
+
+        while (p != null && q != null){
+            if(p.getData() <= q.getData()){
+                result.next = p;
+                result = result.next;
+                p = p.next;
             }else{
-                if(lb.next != null && lb.next.getData() > lb.getData()){
-                    next = lb.next;
-                    lb.next = lb;
-                    lb = next;
-                }else{
-                    lb = lb.next;
-                }
+                result.next = q;
+                result = result.next;
+                q = q.next;
             }
         }
-        
 
-        return result;
+        if(p == null){
+            result.next = q;
+        }else {
+            result.next = p;
+        }
+
+        return head;
+    }
+
+    /**
+     * 删除倒数第k 个节点
+     */
+    private Node deleteLastIndex(Node list, int k){
+        Node fast = list;
+        int i = 1;
+        while (fast != null && i < k){
+            fast = fast.next;
+            ++i;
+        }
+
+        if(fast == null){
+            return list;
+        }
+
+        Node slow = list;
+        Node prev = null;
+
+        while (fast.next != null){
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        if(prev == null){
+            list = list.next;
+        }else{
+            prev.next = prev.next.next;
+        }
+
+        return list;
     }
 
     /**
@@ -428,12 +472,26 @@ public class SingleLinkList {
         //end
 
         //两个有序链表合并
-
-
+        System.out.println("开始合并");
+        SingleLinkList link4 = new SingleLinkList();
+        SingleLinkList link5 = new SingleLinkList();
+        int[] data4 = {1,3,5,7,9};
+        int[] data5 = {2,4,6,8,10};
+        link4.insertTailAll(data4);
+        link5.insertTailAll(data5);
+        Node result = link.mergeSortedLists(link4.head,link5.head);
+        link.head = result;
+        System.out.println("合并后结果");
+        link.printAll();
         //end
 
         //删除链表第n 个节点
-
+        SingleLinkList link6 = new SingleLinkList();
+        int[] data6 = {1,2,3,4,5,6,7};
+        link6.insertTailAll(data6);
+        link6.deleteLastIndex(link6.head,2);
+        System.out.println("删除后数据：");
+        link6.printAll();
         //end
     }
 
