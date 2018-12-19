@@ -1,4 +1,4 @@
-package com.example.demo.study.algorithms;
+package com.example.demo.example.algorithms;
 
 /**
  *  数组的插入、删除、按照下标随机访问操作；
