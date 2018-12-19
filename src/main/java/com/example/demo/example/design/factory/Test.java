@@ -1,4 +1,4 @@
-package com.example.demo.study.design.factory;
+package com.example.demo.example.design.factory;
 
 public class Test {
 }

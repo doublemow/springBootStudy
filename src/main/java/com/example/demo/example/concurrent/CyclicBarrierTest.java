@@ -1,4 +1,4 @@
-package com.example.demo.study.concurrent;
+package com.example.demo.example.concurrent;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
