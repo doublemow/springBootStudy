@@ -1,4 +1,4 @@
-package com.example.demo.concurrent;
+package com.example.demo.study.concurrent;
 
 import java.util.concurrent.CountDownLatch;
 

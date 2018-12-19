@@ -1,4 +1,4 @@
-package com.example.demo.concurrent.atomic;
+package com.example.demo.study.concurrent.atomic;
 
 import lombok.extern.slf4j.Slf4j;
 

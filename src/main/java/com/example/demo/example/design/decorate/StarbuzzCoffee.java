@@ -1,4 +1,4 @@
-package com.example.demo.design.decorate;
+package com.example.demo.study.design.decorate;
 
 public class StarbuzzCoffee {
     public static void main(String[] args) {

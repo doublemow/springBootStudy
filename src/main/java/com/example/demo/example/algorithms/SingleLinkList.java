@@ -1,4 +1,4 @@
-package com.example.demo.algorithms;
+package com.example.demo.study.algorithms;
 
 /**
  * 单链表

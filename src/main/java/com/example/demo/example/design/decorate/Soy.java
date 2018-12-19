@@ -1,4 +1,4 @@
-package com.example.demo.design.decorate;
+package com.example.demo.study.design.decorate;
 
 public class Soy extends CondimentDecorator {
     Beverage beverage;
