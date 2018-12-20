@@ -9,7 +9,7 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
-public class CountExample2 {
+public class ExAtomicInteger {
 
     // 请求总数
     public static  int clientTotal = 5000;
