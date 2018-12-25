@@ -1,5 +1,9 @@
 package com.example.demo.example.algorithms;
 
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /**
  * 单链表
  * 主要算法：
@@ -493,6 +497,19 @@ public class SingleLinkList {
         System.out.println("删除后数据：");
         link6.printAll();
         //end
+
+        LinkedHashMap<String,Object> map = new LinkedHashMap<>(16,0.75f,true);
+        map.put("a","a");
+        map.put("b","b");
+        map.put("c","c");
+        map.get("a");
+        Iterator<Map.Entry<String,Object>> iterator = map.entrySet().iterator();
+
+        while(iterator.hasNext())
+        {
+            Map.Entry entry = iterator.next();
+            System.out.println(entry.getKey()+":"+entry.getValue());
+        }
     }
 
 }
