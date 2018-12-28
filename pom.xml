@@ -66,6 +66,13 @@
 			<artifactId>druid</artifactId>
 			<version>1.0.19</version>
 		</dependency>
+
+		<!--状态机-->
+		<dependency>
+			<groupId>org.springframework.statemachine</groupId>
+			<artifactId>spring-statemachine-core</artifactId>
+			<version>1.2.0.RELEASE</version>
+		</dependency>
 	</dependencies>
 
 	<build>

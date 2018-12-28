@@ -1,9 +1,12 @@
 package com.example.demo.controller;
 
+import com.example.demo.constant.Events;
+import com.example.demo.constant.States;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.statemachine.StateMachine;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,10 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Slf4j
-public class HelloController {
+public class HelloController{
+
+    private UserService userService;
+    private StateMachine<States, Events> stateMachine;
 
     @Autowired
-    UserService userService;
+    public HelloController(StateMachine<States, Events> stateMachine,UserService userService){
+        this.stateMachine = stateMachine;
+        this.userService = userService;
+    }
 
     @RequestMapping(value = "/hello")
     public String hello() {
@@ -31,7 +40,14 @@ public class HelloController {
         return u;
     }
 
-    public static void main(String[] args) {
+    @RequestMapping(value = "/testMachine")
+    public void testMachine() {
+        stateMachine.start();
+        stateMachine.sendEvent(Events.PAY);
+        stateMachine.sendEvent(Events.RECEIVE);
+    }
 
+    public static void main(String[] args) {
+        
     }
 }
