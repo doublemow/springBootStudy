@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.constant.Events;
 import com.example.demo.constant.States;
+import com.example.demo.model.BlogProperties;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +20,6 @@ public class HelloController{
 
     private UserService userService;
     private StateMachine<States, Events> stateMachine;
-
     @Autowired
     public HelloController(StateMachine<States, Events> stateMachine,UserService userService){
         this.stateMachine = stateMachine;

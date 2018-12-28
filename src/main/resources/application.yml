@@ -44,3 +44,6 @@ mybatis.type-aliases-package: com.example.demo.model
 #状态机
 spring.application.name: statemachine
 
+com.didispace.blog.name: 程序猿DD
+com.didispace.blog.title: Spring Boot教程
+com.didispace.blog.desc: ${com.didispace.blog.name}正在努力写《${com.didispace.blog.title}》
