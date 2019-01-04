@@ -2,11 +2,11 @@ package com.example.demo.controller;
 
 import com.example.demo.constant.Events;
 import com.example.demo.constant.States;
-import com.example.demo.model.BlogProperties;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,10 +20,13 @@ public class HelloController{
 
     private UserService userService;
     private StateMachine<States, Events> stateMachine;
+    private RedisTemplate redisTemplate;
     @Autowired
-    public HelloController(StateMachine<States, Events> stateMachine,UserService userService){
+    public HelloController(StateMachine<States, Events> stateMachine, UserService userService,
+                           RedisTemplate redisTemplate){
         this.stateMachine = stateMachine;
         this.userService = userService;
+        this.redisTemplate = redisTemplate;
     }
 
     @RequestMapping(value = "/hello")
@@ -34,9 +37,7 @@ public class HelloController{
     @RequestMapping(value = "/getUserById")
     public User getUserById(){
         User u = userService.getById(1L);
-        log.debug("------------------debug-----------------");
-        log.info("-------------------info-------------------");
-        log.error("==================error==================");
+        redisTemplate.opsForValue().set("test:set","testValue1");
         return u;
     }
 
