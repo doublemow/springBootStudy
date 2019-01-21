@@ -7,6 +7,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.*;
+import java.util.function.LongBinaryOperator;
 
 @Slf4j
 public class ExAtomicInteger {
@@ -23,6 +24,15 @@ public class ExAtomicInteger {
     private static AtomicIntegerArray atomicIntegerArray = new AtomicIntegerArray(6);
     private static LongAdder longAdder = new LongAdder();
     private static DoubleAdder doubleAdder = new DoubleAdder();
+    private static LongAccumulator accumulator1 = new LongAccumulator(new LongBinaryOperator() {
+        @Override
+        public long applyAsLong(long left, long right) {
+            return left + right;
+        }
+    }, 0);
+    private static LongAccumulator accumulator = new LongAccumulator((left,right)->(left + right)
+    , 0);
+    private static AtomicReference<Integer> atomicReference = new AtomicReference<>();
 
     public static void main(String[] args) throws Exception{
         ExecutorService executorService = Executors.newCachedThreadPool();
@@ -45,15 +55,19 @@ public class ExAtomicInteger {
         countDownLatch.await();
         log.info("count:{}", count);
         log.info("atomicLong:{}",atomicLong);
+        log.info("longAdder:{}",longAdder.intValue());
+        log.info("longAccumulator:{}",accumulator.intValue());
     }
 
     private static void add(){
-        count.incrementAndGet();
-        atomicLong.incrementAndGet();
-        atomicBoolean.compareAndSet(true,false);
-        atomicIntegerArray.incrementAndGet(1);
-        longAdder.increment();
-        doubleAdder.add(1.0D);
+//        count.incrementAndGet();
+//        atomicLong.incrementAndGet();
+//        atomicBoolean.compareAndSet(true,false);
+//        atomicIntegerArray.incrementAndGet(1);
+//        longAdder.add(1);
+//        doubleAdder.add(1.0D);
+//        accumulator.accumulate(1);
+        atomicReference.compareAndSet(1,2);
         // count.getAndIncrement();
     }
 }
