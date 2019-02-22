@@ -5,11 +5,14 @@ import com.example.demo.constant.States;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
 
 /**
  * @author chen qi
@@ -49,6 +52,11 @@ public class HelloController{
     }
 
     public static void main(String[] args) {
-        
+        String[] stringArray = new String[5];
+        ArrayUtils.add(stringArray,1,"a");
+        ArrayUtils.contains(stringArray,"a");
+        ArrayList<String> stringList = new ArrayList<>();
+        stringList.contains("a");
+        stringList.add("a");
     }
 }
