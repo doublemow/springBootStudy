@@ -9,4 +9,5 @@ import lombok.Data;
 public class User {
     Long id;
     String name;
+
 }

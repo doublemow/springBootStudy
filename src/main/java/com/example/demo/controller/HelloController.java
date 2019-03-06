@@ -52,11 +52,9 @@ public class HelloController{
     }
 
     public static void main(String[] args) {
-        String[] stringArray = new String[5];
-        ArrayUtils.add(stringArray,1,"a");
-        ArrayUtils.contains(stringArray,"a");
-        ArrayList<String> stringList = new ArrayList<>();
-        stringList.contains("a");
-        stringList.add("a");
+        User u = new User();
+        u.setName("name");
+        u.setId(1L);
+
     }
 }
