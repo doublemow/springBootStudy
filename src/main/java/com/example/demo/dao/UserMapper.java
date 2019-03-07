@@ -4,4 +4,6 @@ import com.example.demo.model.User;
 
 public interface UserMapper {
     User selectById(Long id);
+
+    void insert(User user);
 }

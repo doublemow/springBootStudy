@@ -12,11 +12,18 @@ import java.io.Serializable;
 public class UserServiceImpl implements UserService,Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Autowired
     private UserMapper userMapper;
+
     @Override
     public User getById(Long id) {
         User user = userMapper.selectById(id);
         return user;
+    }
+
+    @Override
+    public void insert(User user) {
+        userMapper.insert(user);
     }
 }

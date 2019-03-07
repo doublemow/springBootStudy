@@ -11,4 +11,16 @@
     <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select * from tb_user where id=#{id}
     </select>
+
+    <insert id="insert" parameterType="com.example.demo.model.User">
+        insert into tb_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            id,
+            name
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{id,jdbcType=BIGINT},
+            #{name,jdbcType=VARCHAR}
+        </trim>
+    </insert>
 </mapper>
