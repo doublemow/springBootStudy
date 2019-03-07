@@ -2,9 +2,14 @@ package com.example.demo.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 
+/**
+ * @author cq
+ */
+@Slf4j
 public class JsonUtil {
 
     private static ObjectMapper objectMapper = new ObjectMapper();
@@ -14,7 +19,7 @@ public class JsonUtil {
         try {
             s = objectMapper.writeValueAsString(object);
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+            log.error("convert Object to String failed{}",e);
         }
         return s;
     }
@@ -24,7 +29,7 @@ public class JsonUtil {
         try {
             t = objectMapper.readValue(s, clazz);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("convert String to Object failed{}",e);
         }
         return t;
     }
