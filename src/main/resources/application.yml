@@ -3,6 +3,7 @@ logging:
     root: info
 
 spring:
+  ##redis
   redis:
     #数据库索引
     database: 0
@@ -22,7 +23,7 @@ spring:
     #连接超时时间
     timeout: 10000
 
-  #状态机
+  ##状态机
   application:
     name: statemachine
 
