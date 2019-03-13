@@ -2,9 +2,15 @@ package com.example.demo.example.algorithms;
 
 public class BinarySearchTree {
 
-     public  static  class Node{
-         int data;
-         Node left;
-         Node right;
-     }
+    Node head;
+
+    public  static class Node{
+        int data;
+        Node left;
+        Node right;
+    }
+
+    public void preOrder(){
+
+    }
 }
