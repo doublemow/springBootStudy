@@ -70,15 +70,15 @@ public class ExAtomicInteger {
     }
 
     private static void add(){
-//        count.incrementAndGet();
-//        atomicLong.incrementAndGet();
-//        atomicBoolean.compareAndSet(true,false);
-//        atomicIntegerArray.incrementAndGet(1);
-//        longAdder.add(1);
-//        doubleAdder.add(1.0D);
-//        accumulator.accumulate(1);
+        count.incrementAndGet();
+        atomicLong.incrementAndGet();
+        atomicBoolean.compareAndSet(true,false);
+        atomicIntegerArray.incrementAndGet(1);
+        longAdder.add(1);
+        doubleAdder.add(1.0D);
+        accumulator.accumulate(1);
         atomicReference.compareAndSet(1,2);
         atomicIntegerFieldUpdater.compareAndSet(exAtomicInteger,1,2);
-        // count.getAndIncrement();
+        count.getAndIncrement();
     }
 }

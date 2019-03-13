@@ -11,6 +11,8 @@ import org.springframework.statemachine.StateMachine;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.*;
+
 /**
  * @author chen qi
  */
@@ -67,9 +69,16 @@ public class HelloController{
     }
 
     public static void main(String[] args) {
-        User u = new User();
-        u.setName("name");
-        u.setId(1L);
-
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                // task to run goes here
+                System.out.println("Hello !!");
+            }
+        };
+        ScheduledExecutorService service =  Executors.newSingleThreadScheduledExecutor();
+        service.scheduleAtFixedRate(runnable, 0, 1, TimeUnit.SECONDS);
+        service.shutdown();
+        service.scheduleAtFixedRate(runnable,0,2,TimeUnit.DAYS);
     }
 }
