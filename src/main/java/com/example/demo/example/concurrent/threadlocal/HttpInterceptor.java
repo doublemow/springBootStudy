@@ -18,6 +18,7 @@ public class HttpInterceptor extends HandlerInterceptorAdapter{
         RequestHolder.remove();
         log.info("afterCompletion");
         return;
+
     }
 
     @Override

@@ -1,14 +1,11 @@
-package com.example.demo.example.concurrent;
+package com.example.demo.example.concurrent.aqs;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.*;
 
 @Slf4j
-public class ConcurrentTest {
+public class Semaphore1 {
 
     // 请求总数
     public static  int clientTotal = 5000;
@@ -25,9 +22,11 @@ public class ConcurrentTest {
         for(int i = 0; i < clientTotal; i++){
             executorService.execute(() -> {
                 try {
-                    semaphore.acquire();
-                    add();
-                    semaphore.release();
+                    if(semaphore.tryAcquire(1, TimeUnit.SECONDS)){
+                        semaphore.acquire();
+                        add();
+                        semaphore.release();
+                    }
                 } catch (InterruptedException e) {
                     log.error("InterruptedException",e);
                 }
