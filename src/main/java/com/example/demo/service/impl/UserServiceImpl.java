@@ -13,6 +13,10 @@ public class UserServiceImpl implements UserService,Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public UserServiceImpl(){
+
+    }
+
     @Autowired
     private UserMapper userMapper;
 
@@ -25,5 +29,11 @@ public class UserServiceImpl implements UserService,Serializable {
     @Override
     public void insert(User user) {
         userMapper.insert(user);
+    }
+
+    @Override
+    public User getByMethodName(String methodName) {
+        User user = userMapper.selectById(1L);
+        return user;
     }
 }

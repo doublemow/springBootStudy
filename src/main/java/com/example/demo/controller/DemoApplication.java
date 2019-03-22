@@ -35,6 +35,6 @@ public class DemoApplication implements WebMvcConfigurer{
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new HttpInterceptor()).addPathPatterns("/**");
+		registry.addInterceptor(new HttpInterceptor()).addPathPatterns("/threadLocal/*");
 	}
 }

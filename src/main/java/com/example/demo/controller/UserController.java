@@ -6,12 +6,16 @@ import com.example.demo.constant.States;
 import com.example.demo.example.concurrent.threadlocal.RequestHolder;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
+import com.example.demo.service.impl.UserServiceImpl;
+import com.example.demo.test.Test;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.concurrent.*;
 
 /**
@@ -48,11 +52,31 @@ public class UserController {
     }
 
     @RequestMapping(value = "/threadLocal/getUserById")
+    public User getThreadLocalUserById(Long id){
+        User u = (User) RequestHolder.get();
+
+        if(u == null){
+            u = userService.getById(id);
+        }
+        return u;
+    }
+
+    @RequestMapping(value = "/getUserById")
     public User getUserById(Long id){
         User u = (User) RequestHolder.get();
 
         if(u == null){
             u = userService.getById(id);
+        }
+
+        Method method = null;
+        try {
+            method = userService.getClass().getMethod("getById", Long.class);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+        if(method != null){
+            Test.test(id,method,userService);
         }
         return u;
     }

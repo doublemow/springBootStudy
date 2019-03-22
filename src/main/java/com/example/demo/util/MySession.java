@@ -16,8 +16,9 @@ public class MySession {
 
     public synchronized static ScheduledExecutorService getScheduledExecutorService() {
         if(scheduledExecutorService == null || scheduledExecutorService.isShutdown()){
-            scheduledExecutorService = new ScheduledThreadPoolExecutor(1,new MyThreadFactory("Deploy"));
+            scheduledExecutorService = new ScheduledThreadPoolExecutor(5,new MyThreadFactory("Deploy"));
         }
         return scheduledExecutorService;
     }
+
 }
