@@ -55,7 +55,7 @@ public class Heap {
         int right;
         while(length >= p << 1){
             left = p << 1;
-            right = (p << 1) +1;
+            right = (p << 1) + 1;
             q = left;
             if(n >= right){
                 if(data[left] < data[right]){
@@ -98,16 +98,16 @@ public class Heap {
 
     public static void main(String[] args) {
         Heap heap = new Heap(20);
-        heap.put(1);
         heap.put(2);
-        heap.put(3);
         heap.put(4);
-        heap.put(5);
-        heap.put(6);
+        heap.put(1);
         heap.put(7);
-        heap.put(8);
+        heap.put(3);
+        heap.put(5);
         heap.put(9);
         heap.put(10);
+        heap.put(6);
+        heap.put(8);
         heap.show();
         System.out.println("removeHead");
         heap.removeHead();

@@ -7,13 +7,13 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class RequestHolder {
-    private final static ThreadLocal<Long> requestHolder = new ThreadLocal<>();
+    private final static ThreadLocal<Object> requestHolder = new ThreadLocal<>();
 
-    public static void add(Long id){
-        requestHolder.set(id);
+    public static void add(Object value){
+        requestHolder.set(value);
     }
 
-    public static Long get(){
+    public static Object get(){
         return requestHolder.get();
     }
 
