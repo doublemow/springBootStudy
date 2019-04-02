@@ -23,7 +23,10 @@ public class Test {
         ScheduledExecutorService scheduledExecutorService = MySession.getScheduledExecutorService();
         log.info("3秒后开始执行计划线程池服务...{}",new Date());
         try{
-            final ScheduledFuture future = scheduledExecutorService.schedule(new MyThread(id,method,clazz), 3, TimeUnit.SECONDS);
+            final ScheduledFuture future = scheduledExecutorService.schedule(new MyThread(id,method,clazz), 0, TimeUnit.SECONDS);
+            final ScheduledFuture future1 = scheduledExecutorService.schedule(new MyThread(id,method,clazz), 0, TimeUnit.SECONDS);
+            final ScheduledFuture future2 = scheduledExecutorService.schedule(new MyThread(id,method,clazz), 0, TimeUnit.SECONDS);
+            final ScheduledFuture future3 = scheduledExecutorService.schedule(new MyThread(id,method,clazz), 0, TimeUnit.SECONDS);
             MySession.futureList.add(future);
         }catch (Exception e){
             log.error("{}",e);
@@ -31,5 +34,6 @@ public class Test {
     }
 
     public static void main(String[] args) {
+
     }
 }

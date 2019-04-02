@@ -92,10 +92,8 @@ public class UserController {
     }
 
     public static void main(String[] args) {
-        Runnable runnable = () -> System.out.println("Hello !!");
-        ScheduledExecutorService service =  Executors.newSingleThreadScheduledExecutor();
-        service.scheduleAtFixedRate(runnable, 0, 1, TimeUnit.SECONDS);
-        service.shutdown();
-        service.scheduleAtFixedRate(runnable,0,2,TimeUnit.DAYS);
+        Long delayTime = ((delayTime =2L - 1L) > 0L) ? delayTime : 0L;
+
+        System.out.println(delayTime);
     }
 }
